@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>DOM</title>
+	</head>
+	<body>
+	
+		<input type="text" id="input" onclick="this.value = '' "/> 
+		<button onclick="appendItem()">Create and Append</button>
+		<button onclick="insertItem()">Insert Before</button>
+		<button onclick="removeDivItem()">Remove Paragraph Item</button>
+		<button onclick="removeListItem()">Remove List Item</button>
+		<button onclick="moveListItem()">Move List Item</button>
+		<button onclick="clearAll()">Clear All Items</button>
+
+		<p>Paragraph item will be created here:</p>
+		<div id="outputDiv"></div>	
+		<p>List item will be created here:</p>	
+		<ul id="outputList"></ul>
+		<p>List item will be moved here:</p>	
+		<ul id="outputList2"></ul>
+	
+		<script>
+		
+			document.getElementById('input').value = "Enter Text Here";
+	
+			function appendItem() {
+			    var item = document.getElementById('input').value;
+			    var line = document.createElement("LI");
+			    var node = document.createTextNode("Appended: " + item);
+			    line.appendChild(node);
+			    document.getElementById('outputDiv').innerHTML = "Created: " + item;
+			    document.getElementById("outputList").appendChild(line);
+			}	
+			function insertItem() {
+			    var item = document.getElementById('input').value;
+			    var line = document.createElement("LI");
+			    var node = document.createTextNode("Inserted: " + item);
+			    line.appendChild(node);
+			    var list = document.getElementById("outputList");
+			    list.insertBefore(line, list.childNodes[0]);
+			}	
+			function removeDivItem() {
+				var list = document.getElementById("outputDiv");
+				list.removeChild(list.childNodes[0]);
+			}
+			function removeListItem() {
+				var list = document.getElementById("outputList");
+				list.removeChild(list.childNodes[0]);
+			}
+			function moveListItem() {
+				var node = document.getElementById("outputList").lastChild;
+				document.getElementById("outputList2").appendChild(node);
+			}
+			function clearAll() {
+				var list = document.getElementById("outputDiv");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}				
+				var list = document.getElementById("outputList");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}	
+				var list = document.getElementById("outputList2");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}	
+			}
+		</script> 
+		
+	</body>
+</html>
