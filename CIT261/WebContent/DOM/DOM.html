@@ -4,8 +4,10 @@
 		<meta charset="ISO-8859-1">
 		<title>DOM</title>
 	</head>
-	<body>
+	<body>	
 	
+		<h1>Document Object Model (DOM)</h1>
+		
 		<input type="text" id="input" onclick="this.value = '' "/> 
 		<button onclick="appendItem()">Create and Append</button>
 		<button onclick="insertItem()">Insert Before</button>
@@ -14,13 +16,13 @@
 		<button onclick="moveListItem()">Move List Item</button>
 		<button onclick="clearAll()">Clear All Items</button>
 
-		<p>Paragraph item will be created here:</p>
+		<p><b>Paragraph item will be created here: </b></p>
 		<div id="outputDiv"></div>	
-		<p>List item will be created here:</p>	
+		<p><b>List item will be created here: </b></p>	
 		<ul id="outputList"></ul>
-		<p>List item will be moved here:</p>	
+		<p><b>List item will be moved here: </b></p>	
 		<ul id="outputList2"></ul>
-	
+
 		<script>
 		
 			document.getElementById('input').value = "Enter Text Here";

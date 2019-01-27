@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>JavaScript</title>
+	</head>
+	<body>
+	
+		<h1>JavaScript</h1>
+		
+		<input type="text" id="input" onclick="this.value = '' "/> 
+		<button onclick="addItem()">Add to Array</button>
+		<button onclick="removeItem()">Remove from Array</button>
+		<button onclick="shiftItem()">Shift Left Array</button>
+		<button onclick="readArrayFor()">Read Array W/ For Loop</button>
+		<button onclick="readArrayWhile()">Read Array W/ While Loop</button>
+		
+		<p><b>Array table after new item was added: </b></p>
+		<p id="arrayOutput"></p>
+		<p><b>Shows value found in an associative Array: </b></p>
+		<p id="associativeArrayOutput"></p>
+		<p><b>Reading the entire table with for loop: </b></p>
+		<p id="forLoopOutput"></p>
+		<p><b>Reading the entire table with for while: </b></p>
+		<p id="whileLoopOutput"></p>		
+		
+		<script>			
+			
+			var array = [];		
+			
+			var associativeArray = [];
+			associativeArray["Mustang"] = 400;
+			associativeArray["M3"] = 450;
+			associativeArray["M5"] = 500; 
+						
+			document.getElementById('input').value = "Enter Text Here";
+			
+			function addItem() {
+				var item = document.getElementById('input').value;
+				array.push(" " + item);
+			  	document.getElementById("arrayOutput").innerHTML = array + "</P>Array Length: " + array.length;	
+			  	
+			  	var aArray = String(associativeArray[item]);	  		
+			  	if (aArray !== "undefined") {
+			  		document.getElementById("associativeArrayOutput").innerHTML = aArray + "hp";			  		
+			  		document.getElementById("associativeArrayOutput").innerHTML += " and the wheel horse power is " + whp(aArray) + "whp.";
+			  		
+			  		switch(aArray) {
+					    case "400":
+					      	document.getElementById("associativeArrayOutput").innerHTML += " Not too bad!";
+					      	break;
+					    case "450":
+					    	document.getElementById("associativeArrayOutput").innerHTML += " Now we are getting somewhere!!";
+					      	break;
+					    case "500":
+					    	document.getElementById("associativeArrayOutput").innerHTML += " That's a lot of power!!!";
+					      	break;
+				    }
+			  	}  else {
+			  		document.getElementById("associativeArrayOutput").innerHTML = "No associative value found.";
+			  	}				  			  	
+			  	function whp(x) {
+			  		var hpreduction = .8
+				  	var aArray = associativeArray[item];
+			  		var whp = hpreduction * aArray
+			  		return whp;
+			  	}	
+			}	
+			function removeItem() {
+				array.pop();
+			  	document.getElementById("arrayOutput").innerHTML = array;
+			}	
+			function shiftItem() {
+				array.shift();
+			  	document.getElementById("arrayOutput").innerHTML = array;
+			}	
+			function readArrayFor() {
+				var text = "";
+				var i = 0;
+				for (i = 0; i < array.length; i++) {
+				  	text += "For Loop: " + array[i] + "<br>";
+				}
+				document.getElementById("forLoopOutput").innerHTML = text;
+			}			
+			function readArrayWhile() {	
+				var text = "";
+				var i = 0;
+				while (array[i]) {					
+				 	text += "While Loop: " + array[i] + "<br>";
+				 	i++;
+				}
+				document.getElementById("whileLoopOutput").innerHTML = text;
+			}
+			
+		</script>
+	
+	</body>
+</html>
