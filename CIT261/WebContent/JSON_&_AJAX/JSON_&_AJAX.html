@@ -2,15 +2,15 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>CIT 261 JSON</title>
+		<title>CIT 261 JSON+AJAX</title>
 	</head>
 	<body>
 	
-		<h1>CIT 261: JSON - Julio Saenz</h1>
-		<h2>This program covers the following: Parse, and Stringify.</h2>
+		<h1>CIT 261: JSON and AJAX - Julio Saenz</h1>
+		<h2>This program covers the following: Parse, Stringify, and requesting a JSON file with AJAX.</h2>
 		
 		<!-- Creates button that execute javascript function -->
-		<button onclick="json()">Parse JSON File</button>	
+		<button onclick="json()">Read JSON File</button>	
 	
 		<!-- Notes -->
 		<p>Take a look at the JSON file <a href="names.json" target="_blank">names.json</a></p>
@@ -25,7 +25,7 @@
 	
 		<script>		
 			
-			// This function reads the names.json file, inserts values in to an array, and then it uses 
+			// This function reads the names.json file using AJAX, inserts values in to an array, and then it uses 
 			// a for loop statement to read the array values and display them to the paragragh id "forLoopOutput"
 			// This function also creates an object and then it converts it to a JSON string.
 			function json() {
