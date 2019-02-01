@@ -6,7 +6,7 @@ This program covers the following: Loops, Conditional Statements, Functions, Var
 ### [JavaScript Objects Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/JavascriptObjects/JavaScriptObjects.html)  
 This program covers the following: Object Creation Functions, Inheritance, Properties, Methods, Instantiation
 
-### [Local Storage Topic](https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/LocalStorage/LocalStorage.html) 
+### [Local Storage Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/LocalStorage/LocalStorage.html) 
 This program covers the following: API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects
 
 ### [DOM Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/DOM/DOM.html)  
