@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>CIT261 JavaScriptObjects</title>
+	</head>
+	<body>	
+	
+		<h1>CIT 261: JavaScript Objects - Julio Saenz</h1>
+		<h2>This program covers the following: Object Creation Functions, Inheritance, Properties, Methods, Instantiation.</h2>
+		
+		<!-- Creates text boxes and buttons that execute javascript functions -->
+		<input type="text" id="firstName" onclick="this.value = '' "/> 
+		<input type="text" id="lastName" onclick="this.value = '' "/> 
+		<input type="text" id="age" onclick="this.value = '' "/> 
+		<input type="text" id="eyeColor" onclick="this.value = '' "/>
+		<button onclick="addItem()">Create Object</button>
+		<button onclick="readArrayFor()">Read Array</button>
+		<button onclick="clearAll()">Clear All Items</button>
+		
+		<!-- Creates HTML elements and sets id's to be used to diplay messages from javascript functions -->
+		<p><b>Created New Object: </b></p>	
+		<p>Used a function to create the object and set parameters from the values being entered.  The list values are being created by appending values using DOM.</p>	
+		<ul id="outputList"></ul>
+		<p><b>Array Values:</b></p>
+		<p>New objects are being pushed to a empty array and the array values are being read using a for loop.</p>
+		<p id="forLoopOutput"></p>
+		
+		<script>
+			// Creates an empty array
+			var array = [];		
+			
+			// Sets dafault text in text box
+			document.getElementById('firstName').value = "Enter First Name";
+			document.getElementById('lastName').value = "Enter Last Name";
+			document.getElementById('age').value = "Enter Age";
+			document.getElementById('eyeColor').value = "Enter Eye Color";
+		
+			// Create an object:
+			function Person(first, last, age, eye) {
+			  this.firstName = first;
+			  this.lastName = last;
+			  this.age = age;
+			  this.eyeColor = eye;
+			}
+		
+  			// Create a new object and sets parameters by using user entered values.  
+  			// Appends values to list value using DOM.  
+  			// Pushes values to an array.
+  			function addItem() {  								
+	  			var firstName = document.getElementById('firstName').value;
+	  			var lastName = document.getElementById('lastName').value;
+	  			var age = document.getElementById('age').value;
+	  			var eyeColor = document.getElementById('eyeColor').value;
+	  			// Creates new object
+				var item = new Person(firstName, lastName, age, eyeColor);
+				var item = item.firstName + " ," + item.lastName + " ," + item.age + " ," + item.eyeColor;
+				// Creates new list element and appends object parameter values.
+				var line = document.createElement("LI");
+			    var node = document.createTextNode(item);
+			    line.appendChild(node);
+			    document.getElementById("outputList").appendChild(line);	
+			    // Pushes new object parameter values to array.
+			    array.push(" " + item);
+  			}	
+  			
+  			// This function uses a for loop statement to read the "array" array values and display them to the paragragh id "forLoopOutput"
+			function readArrayFor() {
+				var text = "";
+				var i = 0;
+				for (i = 0; i < array.length; i++) {
+				  	text += array[i] + "<br>";
+				}
+				document.getElementById("forLoopOutput").innerHTML = text;
+			}  			
+			// Clears all nodes in paragraph elements
+			function clearAll() {
+				var list = document.getElementById("outputList");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}				
+				var list = document.getElementById("forLoopOutput");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}	
+				// Sets dafault text in text box
+				document.getElementById('firstName').value = "Enter First Name";
+				document.getElementById('lastName').value = "Enter Last Name";
+				document.getElementById('age').value = "Enter Age";
+				document.getElementById('eyeColor').value = "Enter Eye Color";
+			}
+  			
+		</script> 
+		
+	</body>
+</html>
