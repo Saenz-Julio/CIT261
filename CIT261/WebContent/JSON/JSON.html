@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>CIT 261 JSON</title>
+	</head>
+	<body>
+	
+		<h1>CIT 261: JSON - Julio Saenz</h1>
+		<h2>This program covers the following: Parse, and Stringify.</h2>
+		
+		<!-- Creates button that execute javascript function -->
+		<button onclick="json()">Parse JSON File</button>	
+	
+		<!-- Notes -->
+		<p>Take a look at the JSON file <a href="names.json" target="_blank">names.json</a></p>
+		
+		<!-- Creates HTML elements and sets id's to be used to diplay messages from javascript functions -->
+		<p><b>Below is the content of the JSON file:</b></p>	
+		<p id="rawdata"></p>		
+		<p><b>JSON file content is being converted into a JavaScript array.  Below are the results:</b></p>
+		<p id="forLoopOutput"></p>		
+		<p><b>JavaScript Object is being converted into a JSON string.  Below are the results:</b></p>
+		<p id="demo"></p>
+	
+		<script>		
+			
+			// This function reads the names.json file, inserts values in to an array, and then it uses 
+			// a for loop statement to read the array values and display them to the paragragh id "forLoopOutput"
+			// This function also creates an object and then it converts it to a JSON string.
+			function json() {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+				  	if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("rawdata").innerHTML = this.responseText;
+					    var myArr = JSON.parse(this.responseText);			    
+					    var text = "";
+						var i = 0;
+						for (i = 0; i < myArr.length; i++) {
+						  	text += myArr[i] + ", ";
+						  	// creates object
+						  	var obj = { name: myArr[i], place: i };
+							var myJSON = JSON.stringify(obj);
+							document.getElementById("demo").innerHTML += myJSON;
+						}
+						document.getElementById("forLoopOutput").innerHTML = text;
+				  	}
+				};
+				xmlhttp.open("GET", "names.json", true);
+				xmlhttp.send();			
+			}			
+			
+		</script>
+		
+	</body>
+</html>
+
