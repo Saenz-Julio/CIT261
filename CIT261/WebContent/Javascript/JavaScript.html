@@ -2,19 +2,23 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>JavaScript</title>
+		<title>CIT 261 JavaScript</title>
 	</head>
 	<body>
 	
-		<h1>JavaScript</h1>
+		<h1>CIT 261: JavaScript - Julio Sasenz</h1>
+		<h2>This program covers the following: Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h2>
 		
+		<!-- Creates text box and buttons that execute javascript functions -->
 		<input type="text" id="input" onclick="this.value = '' "/> 
 		<button onclick="addItem()">Add to Array</button>
 		<button onclick="removeItem()">Remove from Array</button>
 		<button onclick="shiftItem()">Shift Left Array</button>
 		<button onclick="readArrayFor()">Read Array W/ For Loop</button>
 		<button onclick="readArrayWhile()">Read Array W/ While Loop</button>
+		<button onclick="clearAll()">Clear All Items</button>
 		
+		<!-- Creates HTML elements and sets id's to be used to diplay messages from javascript functions -->
 		<p><b>Array table after new item was added: </b></p>
 		<p id="arrayOutput"></p>
 		<p><b>Shows value found in an associative Array: </b></p>
@@ -26,25 +30,32 @@
 		
 		<script>			
 			
+			// Creates an empty array
 			var array = [];		
 			
+			// Creates a static associative array to be used with the switch statement
 			var associativeArray = [];
 			associativeArray["Mustang"] = 400;
 			associativeArray["M3"] = 450;
 			associativeArray["M5"] = 500; 
-						
+			
+			// Sets dafault text in text box
 			document.getElementById('input').value = "Enter Text Here";
 			
+			// This function adds a new item to the empty "array" array
 			function addItem() {
 				var item = document.getElementById('input').value;
 				array.push(" " + item);
 			  	document.getElementById("arrayOutput").innerHTML = array + "</P>Array Length: " + array.length;	
 			  	
-			  	var aArray = String(associativeArray[item]);	  		
+			 	// Assigns input value stored in "item" variable and converts it to a string
+			  	var aArray = String(associativeArray[item]);	  
+			 	// Checks "aArray" variable value and compares it to the word "undefined," meaning not found in the associative array
+			 	// If not found it concatinates the "array" with other strings to form a message displayed using paragraph id "associativeArrayOutput"
 			  	if (aArray !== "undefined") {
 			  		document.getElementById("associativeArrayOutput").innerHTML = aArray + "hp";			  		
 			  		document.getElementById("associativeArrayOutput").innerHTML += " and the wheel horse power is " + whp(aArray) + "whp.";
-			  		
+			  		// Switch checks values in "aArray" variable and depending on the value, it will append a new string comment to the paragraph id "associativeArrayOutput"
 			  		switch(aArray) {
 					    case "400":
 					      	document.getElementById("associativeArrayOutput").innerHTML += " Not too bad!";
@@ -56,24 +67,29 @@
 					    	document.getElementById("associativeArrayOutput").innerHTML += " That's a lot of power!!!";
 					      	break;
 				    }
+			  	// if "aArray" does equal "undefined," then this will display the message below to the paragraph id "associativeArrayOutput"
 			  	}  else {
 			  		document.getElementById("associativeArrayOutput").innerHTML = "No associative value found.";
-			  	}				  			  	
+			  	}	
+			 	// this function passes a value, calculates the hp value from the "aArray" variable and it multiplies it x .8, and it return the value in "whp"
 			  	function whp(x) {
 			  		var hpreduction = .8
 				  	var aArray = associativeArray[item];
 			  		var whp = hpreduction * aArray
 			  		return whp;
-			  	}	
+			  	}
+			// This function removes items from the "array" array
 			}	
 			function removeItem() {
 				array.pop();
 			  	document.getElementById("arrayOutput").innerHTML = array;
 			}	
+			// This function removes an item from the "array" array by shifting values to the left
 			function shiftItem() {
 				array.shift();
 			  	document.getElementById("arrayOutput").innerHTML = array;
 			}	
+			// This function uses a for loop statement to read the "array" array values and display them to the paragragh id "forLoopOutput"
 			function readArrayFor() {
 				var text = "";
 				var i = 0;
@@ -81,7 +97,8 @@
 				  	text += "For Loop: " + array[i] + "<br>";
 				}
 				document.getElementById("forLoopOutput").innerHTML = text;
-			}			
+			}	
+			// This function uses a while loop statement to read the "array" array values and display them to the paragragh id "forLoopOutput"
 			function readArrayWhile() {	
 				var text = "";
 				var i = 0;
@@ -90,6 +107,27 @@
 				 	i++;
 				}
 				document.getElementById("whileLoopOutput").innerHTML = text;
+			}
+			// Clears all nodes in paragraph elements
+			function clearAll() {
+				var list = document.getElementById("arrayOutput");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}				
+				var list = document.getElementById("associativeArrayOutput");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}	
+				var list = document.getElementById("forLoopOutput");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}
+				var list = document.getElementById("whileLoopOutput");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}	
+				// Sets dafault text in text box
+				document.getElementById('input').value = "Enter Text Here";
 			}
 			
 		</script>

@@ -2,12 +2,14 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>DOM</title>
+		<title>CIT 261 DOM</title>
 	</head>
 	<body>	
 	
 		<h1>Document Object Model (DOM)</h1>
+		<h2>This program covers the following: createElement, appendChild, insertBefore, and removeChild.  It also moves a child from one list to another.</h2>
 		
+		<!-- Creates text box and buttons that execute javascript functions -->
 		<input type="text" id="input" onclick="this.value = '' "/> 
 		<button onclick="appendItem()">Create and Append</button>
 		<button onclick="insertItem()">Insert Before</button>
@@ -16,6 +18,7 @@
 		<button onclick="moveListItem()">Move List Item</button>
 		<button onclick="clearAll()">Clear All Items</button>
 
+		<!-- Creates HTML elements and sets id's to be used to diplay messages from javascript functions -->
 		<p><b>Paragraph item will be created here: </b></p>
 		<div id="outputDiv"></div>	
 		<p><b>List item will be created here: </b></p>	
@@ -24,9 +27,9 @@
 		<ul id="outputList2"></ul>
 
 		<script>
-		
+			// Sets dafault text in text box
 			document.getElementById('input').value = "Enter Text Here";
-	
+			// Creates and appends item to div and list elements.
 			function appendItem() {
 			    var item = document.getElementById('input').value;
 			    var line = document.createElement("LI");
@@ -35,6 +38,7 @@
 			    document.getElementById('outputDiv').innerHTML = "Created: " + item;
 			    document.getElementById("outputList").appendChild(line);
 			}	
+			// Inserts item before existing list items.
 			function insertItem() {
 			    var item = document.getElementById('input').value;
 			    var line = document.createElement("LI");
@@ -43,18 +47,22 @@
 			    var list = document.getElementById("outputList");
 			    list.insertBefore(line, list.childNodes[0]);
 			}	
+			// Removes div item
 			function removeDivItem() {
 				var list = document.getElementById("outputDiv");
 				list.removeChild(list.childNodes[0]);
 			}
+			// Removes list item
 			function removeListItem() {
 				var list = document.getElementById("outputList");
 				list.removeChild(list.childNodes[0]);
 			}
+			// Moves list item from first list to second list
 			function moveListItem() {
 				var node = document.getElementById("outputList").lastChild;
 				document.getElementById("outputList2").appendChild(node);
 			}
+			// Removes all div and list items
 			function clearAll() {
 				var list = document.getElementById("outputDiv");
 				while (list.hasChildNodes()){
@@ -68,6 +76,8 @@
 				while (list.hasChildNodes()){
 					list.removeChild(list.firstChild);
 				}	
+				// Sets dafault text in text box
+				document.getElementById('input').value = "Enter Text Here";
 			}
 		</script> 
 		
