@@ -13,7 +13,7 @@
 		<button onclick="json()">Read JSON File</button>	
 	
 		<!-- Notes -->
-		<p>Take a look at the JSON file <a href="names.json" target="_blank">names.json</a></p>
+		<p>Take a look at the JSON file <a href="JSON-AJAX_names.json" target="_blank">JSON-AJAX_names.json</a></p>
 		
 		<!-- Creates HTML elements and sets id's to be used to diplay messages from javascript functions -->
 		<p><b>Below is the content of the JSON file:</b></p>	
@@ -21,7 +21,7 @@
 		<p><b>JSON file content is being converted into a JavaScript array.  Below are the results:</b></p>
 		<p id="forLoopOutput"></p>		
 		<p><b>JavaScript Object is being converted into a JSON string.  Below are the results:</b></p>
-		<p id="demo"></p>
+		<p id="objectToString"></p>
 	
 		<script>		
 			
@@ -41,12 +41,12 @@
 						  	// creates object
 						  	var obj = { name: myArr[i], place: i };
 							var myJSON = JSON.stringify(obj);
-							document.getElementById("demo").innerHTML += myJSON;
+							document.getElementById("objectToString").innerHTML += myJSON;
 						}
 						document.getElementById("forLoopOutput").innerHTML = text;
 				  	}
 				};
-				xmlhttp.open("GET", "names.json", true);
+				xmlhttp.open("GET", "JSON-AJAX_names.json", true);
 				xmlhttp.send();			
 			}			
 			
