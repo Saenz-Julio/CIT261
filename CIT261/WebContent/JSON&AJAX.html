@@ -3,6 +3,13 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>CIT 261 JSON+AJAX</title>
+		<style>
+			img {
+				height: 100px;
+				float: left;
+			}
+  		</style>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	</head>
 	<body>
 	
@@ -11,9 +18,10 @@
 		
 		<!-- Creates button that execute javascript function -->
 		<button onclick="json()">Read JSON File</button>	
+		<button onclick="api()">Read from web API</button>	
 	
 		<!-- Notes -->
-		<p>Take a look at the JSON file <a href="JSON-AJAX_names.json" target="_blank">JSON-AJAX_names.json</a></p>
+		<p>Take a look at the JSON file <a href="JSON&AJAX_names.json" target="_blank">JSON&AJAX_names.json</a></p>
 		
 		<!-- Creates HTML elements and sets id's to be used to diplay messages from javascript functions -->
 		<p><b>Below is the content of the JSON file:</b></p>	
@@ -22,6 +30,8 @@
 		<p id="forLoopOutput"></p>		
 		<p><b>JavaScript Object is being converted into a JSON string.  Below are the results:</b></p>
 		<p id="objectToString"></p>
+		<p><b>Loads from web API.  Below are the results:</b></p>
+		<div id="images"></div>
 	
 		<script>		
 			
@@ -46,9 +56,26 @@
 						document.getElementById("forLoopOutput").innerHTML = text;
 				  	}
 				};
-				xmlhttp.open("GET", "JSON-AJAX_names.json", true);
+				xmlhttp.open("GET", "JSON&AJAX_names.json", true);
 				xmlhttp.send();			
-			}			
+			}	
+			
+			function api() {
+				  var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+				  $.getJSON( flickerAPI, {
+				    tags: "mount rainier",
+				    tagmode: "any",
+				    format: "json"
+				  })
+				    .done(function( data ) {
+				      $.each( data.items, function( i, item ) {
+				        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+				        if ( i === 3 ) {
+				          return false;
+				        }
+				      });
+				    });
+				};
 			
 		</script>
 		
