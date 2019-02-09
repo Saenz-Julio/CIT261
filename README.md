@@ -13,5 +13,5 @@ This program covers the following: createElement, appendChild, insertBefore, and
 ### [Local Storage Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/LocalStorage.html) 
 This program covers the following: API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects
 
-### [JSON and AJAX Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/JSON-AJAX.html)  
+### [JSON and AJAX Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/JSON_AJAX.html)  
 This program covers the following: Parse, Stringify, and requesting a JSON file with AJAX.
