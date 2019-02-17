@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>CIT 261 Water Calc</title>
+	</head>
+	<body>	
+		<h1>CIT 261: Water Calc App - Julio Saenz</h1>
+		<h2>This program covers the following: JavaScript, JavaScript Objects, JSON, AJAX, Local Storage, and DOM.</h2>
+		
+		<div id="stats">
+			<p><b>Please enter the values below to calculate the amount of water you should drink on a daily basis.</b></p>	
+			Enter your age: <input type="number" id="age" onclick="this.value = '' "/>
+			Weight(pounds): <input type="number" id="wei" onclick="this.value = '' "/>
+			Height(inches): <input type="number" id="hei" onclick="this.value = '' "/>
+			<button onclick="calculate()">Calculate</button>
+			<button onclick="reset()">Reset</button>
+		</div>
+		
+		<p><b>Recommended amount of water per day:</b></p>	
+		<p id="calc"></p>	
+		<p id="temp"></p>	
+		
+		<p><b>Calculation history:</b></p>	
+		<ul id="history"></ul>
+		
+		<script>
+			// Creates an empty array to take in values from local storage
+			var array = [];				
+			var associativeArray = [];	
+			var city = "Texas";
+			
+			// Pulls JSON from openwathermap.org API via AJAX call
+			var weather = new XMLHttpRequest();
+			weather.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=311323dccd32343d1ef03de7a7f5777e", 'true');
+			weather.send();			
+					
+			function calculate() {	
+				// Parses JSON code retrieved from openwathermap.org
+				var res = weather.response;
+				var obj = JSON.parse(res);
+				var tem = obj.main.temp;
+				var hum = obj.main.humidity;	
+				var nam = obj.name;	
+					
+				// Sets value in local storage
+				if (typeof(Storage) !== "undefined") {
+					localStorage.setItem("localTem", tem);
+					localStorage.setItem("localhum", hum);
+					localStorage.setItem("localnam", nam);
+				} else {
+				  	document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+				}
+				// Pushes local storage values to associative array.
+			    associativeArray["tem"] = localStorage.getItem("localTem");    
+			    associativeArray["hum"] = localStorage.getItem("localHum");  
+			    associativeArray["nam"] = localStorage.getItem("localNam");  	
+				
+				// Gets user entered values
+				var age = document.getElementById('age').value;
+				var wei = document.getElementById('wei').value;
+				var hei = document.getElementById('hei').value;
+				
+				// Create an object from entered values
+				var item = new calc(age, wei, hei);
+				
+				// Creates new list element and appends values from array and object.
+				var line = document.createElement("LI");
+			    var node = document.createTextNode(
+			    	// gets values from associative array
+			    	"Current Temperature: " + associativeArray["tem"] + "  " + 
+			    	"humidity = " + associativeArray["hum"] + ", " +
+			    	"city name = " + nam + ", " +
+			    	// gets values from object
+			    	"age = " + item.age + ", " +
+			    	"weight = " + item.wei + ", " +
+			    	"height = " + item.hei);
+			    line.appendChild(node);
+			    document.getElementById("history").appendChild(line);
+			    
+			    // displays calculated water daily amount
+			    var calcBase = calcWater(item.age, item.wei, item.hei);
+			    var calcExtr = calcExtra(associativeArray["tem"]) * calcBase;
+			    calcExtr = calcExtr.toFixed(2);
+			    
+			    document.getElementById("calc").innerHTML = calcBase + " ounces";
+			    document.getElementById("temp").innerHTML = "Based on the current temperature of " + associativeArray["tem"] + "&deg F in " + nam + " you should drink an additional " + calcExtr + " ounces.";
+			    
+			 	// calculates the amount of water that should be consumed per day
+			  	function calcWater(age, wei, hei) {
+			 		var ageMultiplier;	
+			 		var heiMultiplier;	
+			 		
+			  		switch (true) {
+				  	case age >= 55:
+				  		ageMultiplier = 30;
+				    	break;
+				  	case age >= 30:
+				  		ageMultiplier = 35;
+				   		break;
+				  	case age >= 1:
+				  		ageMultiplier = 40;
+				   		break;
+					}	
+			  		
+			  		switch (true) {
+				  	case hei >= 78:
+				  		heiMultiplier = 1.1;
+				    	break;
+				  	case hei >= 68:
+				  		heiMultiplier = 1.05;
+				   		break;
+				  	case hei >= 1:				  		
+				  		heiMultiplier = 1;
+				   		break;
+					}	
+			  
+			  		var waterAmount = wei /2.2 * ageMultiplier / 28.3 * heiMultiplier;
+			  		return waterAmount.toFixed(2);
+			  	}	
+				// calculates the amount of water that should be consumed per day
+			  	function calcExtra(tem) {
+			 		var temMultiplier;			 		
+			  		
+			  		switch (true) {
+			  		case tem >= 100:
+				  		temMultiplier = .3;
+				    	break;
+			  		case tem >= 90:
+				  		temMultiplier = .2;
+				    	break;
+				  	case tem >= 80:
+				  		temMultiplier = .1;
+				   		break;
+				  	case tem >= 1:				  		
+				  		temMultiplier = 0;
+				   		break;
+					}	
+			  		return temMultiplier.toFixed(2);
+			  	}	
+			}
+			
+			// Create an object
+			function calc(age, wei, hei) {
+			  	this.age = age;
+			  	this.wei = wei;
+			  	this.hei = hei;
+			}
+			
+			// Clears all nodes in paragraph elements
+			function reset() {
+				var list = document.getElementById("calc");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}			
+				var list = document.getElementById("temp");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}
+				var list = document.getElementById("history");
+				while (list.hasChildNodes()){
+					list.removeChild(list.firstChild);
+				}	
+			}	
+		
+		</script>
+		
+	</body>
+</html>
