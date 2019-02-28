@@ -27,3 +27,8 @@ This program covers the following: Standard JavaScript Events Including those fo
 
 ### [HTML5 Tags](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/DrinkingWaterApp.html)  
 This program covers the following: Video, Audio, and Canvas.
+
+### [Transforms, Transitions, & Animation](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/DrinkingWaterApp.html)  
+
+[Presentation 3 Link](https://byui.zoom.us/recording/share/P18L0tX6SEBxWEjcgaIZHexFAMKeGw_PFuoi38u-rz-wIumekTziMw?startTime=1550720713000) (Note: My Presentation starts at 0 minutes.  My 3rd presentation and 4th presentation covered transitions so I am only including the video that covered transitions and animations)
+This program covers the following: Video, Audio, and Canvas.
