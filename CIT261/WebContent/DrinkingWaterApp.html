@@ -49,9 +49,9 @@
 		
 	</head>
 	
-	<body id="body">
+	<body onload="onload()" id="body">
 		
-		<h1>CIT 261: Water Calc App - Julio Saenz</h1>
+		<h1 id="h1">CIT 261: Water Calc App - Julio Saenz</h1>
 		<p>This program covers the following: JavaScript, JavaScript Objects, JSON, AJAX, Local Storage, DOM, HTML5 Tags, and CSS Manipulation, Events, Animations, Transoform, and Transition.</p>
 		
 		<div id="input">
@@ -65,13 +65,13 @@
 			<p><b>Results:</b></p>			
 		</div>
 		
-		<div id="recommendation">				
+		<div onmouseenter="transition()" id="recommendation">				
 			<p id="calc">-</p>				
 			<p id="temp">-</p>	
 			<p id="comp">-</p>				
 		</div>
 		
-		<div id="canvas">				
+		<div onmousedown="animate()" id="canvas">				
 			<p><b>Your Current Progress:</b></p>		
 			<div id ="animate"></div>				
 			<canvas id="myCanvas" width="400" height="100" style="border:none;">
@@ -193,9 +193,6 @@
 			    ctx2.textAlign = "center";
 			    ctx2.fillText(Number(calcPerc / 4).toFixed(0) + "%",200,60);
 			    
-			 	// Element transition via triggered CSS
-			    document.getElementById("recommendation").style.transition = "all 5s";
-			 	
 			 	// Element transform via triggered CSS
 			    document.getElementById("recommendation").style.transform = "translate(100px)"; 
 			    
@@ -300,6 +297,16 @@
 					list.removeChild(list.firstChild);
 				}	
 			}	
+			
+			// Element transition via triggered CSS
+			function transition() {			 			
+				document.getElementById("recommendation").style.transition = "all 5s";
+		  	}
+			
+			function onload() {
+				document.getElementById("h1").style.color = "blue";
+				document.getElementById("h1").style.transition = "all 5s";
+			}
 		
 		</script>
 		
