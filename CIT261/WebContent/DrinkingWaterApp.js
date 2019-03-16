@@ -71,6 +71,9 @@ function calculate() {
     	calcPerc = 100 * 4;
     }
     
+    // Element transform via triggered CSS
+    document.getElementById("recommendation").style.transform = "translate(100px)"; 
+    
     // Canvas: variables
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -89,10 +92,7 @@ function calculate() {
     ctx2.fillStyle = "black";
     ctx2.textAlign = "center";
     ctx2.fillText(Number(calcPerc / 4).toFixed(0) + "%",200,60);
-    
- 	// Element transform via triggered CSS
-    document.getElementById("recommendation").style.transform = "translate(100px)"; 
-    
+        
     // Canvas animation via triggered CSS
     var elem = document.getElementById("animate");   
 	var pos = 0;
