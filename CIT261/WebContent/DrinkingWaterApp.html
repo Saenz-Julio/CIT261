@@ -8,10 +8,10 @@
 	
 	<body onload="onload()" id="body">
 		
-		<h1 id="h1">CIT 261: Water Calc App - Julio Saenz</h1>
-		<p>This program covers the following: JavaScript, JavaScript Objects, JSON, AJAX, Local Storage, DOM, HTML5 Tags, and CSS Manipulation, Events, Animations, Transoform, and Transition.</p>
+		<h1 id="h1">CIT 261: Water Calc App - Julio Saenz</h1>		
 		
 		<div id="input">
+			<p>This program covers the following: JavaScript, JavaScript Objects, JSON, AJAX, Local Storage, DOM, HTML5 Tags, and CSS Manipulation, Events, Animations, Transoform, and Transition.</p>
 			<p><b>Please enter the values below to calculate the amount of water you should drink on a daily basis.</b></p>	
 			Enter your age: <input type="number" id="age" onclick="this.value = '' "/>
 			Weight(pounds): <input type="number" id="wei" onclick="this.value = '' "/>
@@ -36,13 +36,15 @@
 			</canvas>	
 		</div>	
 		
-		<p><b>Calculation history:</b></p>	
-		<ul id="history"></ul>		
+		<div>
+			<p><b>Calculation history:</b></p>	
+			<ul id="history"></ul>	
+		</div>			
 		
 		<div id="video">
 			<p><b>Below is a safety tip about keeping drinking water clean:</b></p>
 			<p>Video courtesy of <a href="https://www.health.govt.nz/our-work/environmental-health/drinking-water/drinking-water-resources/drinking-water-videos" target="_blank">Health.gov</a>.</p>
-			<video id="v1" width="530" controls>
+			<video id="v1" width="auto" controls>
 			  <source src="water-bugs-1.mp4" type="video/mp4">
 			  Your browser does not support HTML5 video.
 			</video>				

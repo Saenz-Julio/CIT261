@@ -1,13 +1,13 @@
 body {
-  background-color: lightblue;			  
-  margin: auto;
-	  width: 95%; 			  
+  background-color: lightblue;			  	  
 }			
 h1 {
   background-color: black;
   text-align: center;
   text-transform: uppercase;
   color: white;			  
+}
+div {	  
 }
 p {
   text-align: justify;
@@ -34,7 +34,7 @@ input:hover {
   background-color: white;				 	  
 }
 #animate {
-  width: 450px;
+  width: 1000px;
   height: 100px;
   position: absolute;
   background-color: lightblue;
