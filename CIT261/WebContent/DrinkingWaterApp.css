@@ -1,0 +1,41 @@
+body {
+  background-color: lightblue;			  
+  margin: auto;
+	  width: 95%; 			  
+}			
+h1 {
+  background-color: black;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;			  
+}
+p {
+  text-align: justify;
+  letter-spacing: 1px;
+}
+a {
+  text-decoration: none;
+  color: #008CBA;
+}
+canvas {
+  background-color: white;
+}
+input {
+	background-color: white;
+}
+input:hover {
+  background-color: black;
+  color: white;
+}
+#recommendation {
+  background-color: lightblue;
+}
+#recommendation:hover {
+  background-color: white;				 	  
+}
+#animate {
+  width: 450px;
+  height: 100px;
+  position: absolute;
+  background-color: lightblue;
+}
