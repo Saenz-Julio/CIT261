@@ -18,9 +18,6 @@ a {
   text-decoration: none;
   color: #008CBA;
 }
-canvas {
-  background-color: white;
-}
 video {
   width: 100%;
 }
@@ -38,7 +35,7 @@ input:hover {
   background-color: white;				 	  
 }
 #animate {
-  width: 400px;
+  width: 450px;
   height: 100px;
   position: absolute;
   background-color: lightblue;
