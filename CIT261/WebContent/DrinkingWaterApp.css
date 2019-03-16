@@ -20,6 +20,10 @@ a {
 canvas {
   background-color: white;
 }
+video {
+	width: 100%;
+	height: auto;
+}
 input {
 	background-color: white;
 }
