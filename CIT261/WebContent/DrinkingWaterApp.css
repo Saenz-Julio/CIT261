@@ -22,7 +22,8 @@ canvas {
   background-color: white;
 }
 video {
-
+	width: 95%;
+	height: auto;
 }
 input {
 	background-color: white;
