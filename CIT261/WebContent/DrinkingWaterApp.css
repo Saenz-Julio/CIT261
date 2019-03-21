@@ -1,18 +1,19 @@
 body {
-  background-color: lightblue;			  	  
+  background-color: white;	
+  font-family: Arial, Helvetica, sans-serif;		  	  
 }	
 /*body, html { overflow-x:hidden; }	*/	
+.topnav {
+  overflow: hidden;
+  background-color: #4CAF50;
+}
 h1 {
-  background-color: black;
   text-align: center;
   text-transform: uppercase;
-  color: white;			  
+  color: #4CAF50;			  
 }
-div {	  
-}
-p {
-  text-align: justify;
-  letter-spacing: 1px;
+h3 {
+margin-top: 50px;	  
 }
 a {
   text-decoration: none;
@@ -21,22 +22,23 @@ a {
 video {
   width: 100%;
 }
-input {
-	background-color: white;
-}
 input:hover {
   background-color: black;
   color: white;
 }
-#recommendation {
-  background-color: lightblue;
-}
 #recommendation:hover {
-  background-color: white;				 	  
+  background-color: lightblue;				 	  
 }
 #animate {
-  width: 400px;
-  height: 100px;
   position: absolute;
-  background-color: lightblue;
+  background-color: #4CAF50;
+  text-align: center;
+  vertical-align: middle;
+  height: 30px;
+}
+canvas { 
+  height: 30px; 
+  width: 97.75vw; 
+  display: block;
+  background-color: #ddd;	
 }

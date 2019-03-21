@@ -65,47 +65,28 @@ function calculate() {
     
     if (calcComp <= 0) {
     	document.getElementById("comp").innerHTML = calcComp * -1 + " ounces (Additional amount to drink based on " + wat + " ounces already consummed)";
-    	calcPerc = (1 - (calcComp / calcTota * -1)) * 400;
+    	calcPerc = (1 - (calcComp / calcTota * -1)) * 100;
     } else {
     	document.getElementById("comp").innerHTML = "0 ounces (Additional amount to drink based on " + wat + " ounces already consummed)";
-    	calcPerc = 100 * 4;
+    	calcPerc = 100;
     }
     
     // Element transform via triggered CSS
-    document.getElementById("recommendation").style.transform = "translate(100px)"; 
-    
-    // Canvas: variables
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var ctx2 = c.getContext("2d");
+    // document.getElementById("recommendation").style.transform = "translate(100px)";         
 
-    // Canvas: Create gradient
-    var grd = ctx.createLinearGradient(0,0,400,0);
-    grd.addColorStop(0,"red");
-    grd.addColorStop(1,"white");
-
-    // Canvas: Fill with gradient
-    ctx.fillStyle = grd;
-    ctx.clearRect(0, 0, 400, 100)
-    ctx.fillRect(0,0,calcPerc,100);			    
-    ctx.font = "30px Arial";
-    ctx2.fillStyle = "black";
-    ctx2.textAlign = "center";
-    ctx2.fillText(Number(calcPerc / 4).toFixed(0) + "%",200,60);
-        
-    // Canvas animation via triggered CSS
+    // Element animation via triggered CSS
     var elem = document.getElementById("animate");   
-	var pos = 0;
-  	var id = setInterval(frame, 6);
-  	function frame() {
-	    if (pos == 450) {
-	      clearInterval(id);
-	    } else {
-	      pos++; 
-	      elem.style.left = pos + "px"; 
-	      elem.style.right = pos + "px"; 
-	    }
-	}	
+    var width = 0;
+    var id = setInterval(frame, 20);
+    function frame() {
+      if (width >= calcPerc) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width - 1 + '%'; 
+        elem.innerHTML = width * 1  + '%';
+      }
+    }
 }
 
 // calculates the amount of water that should be consumed per day
@@ -201,6 +182,6 @@ function transition() {
 }
 
 function onload() {
-	document.getElementById("h1").style.color = "blue";
+	document.getElementById("h1").style.color = "white";
 	document.getElementById("h1").style.transition = "all 5s";
 }
