@@ -5,12 +5,12 @@ body {
 /*body, html { overflow-x:hidden; }	*/	
 .topnav {
   overflow: hidden;
-  background-color: #4CAF50;
+  background-color: black;
 }
-h1 {
+h2 {
   text-align: center;
   text-transform: uppercase;
-  color: #4CAF50;			  
+  color: black;			  
 }
 h3 {
   margin-top: 25px;	  
@@ -44,4 +44,16 @@ canvas {
   width: 97.75vw; 
   display: block;
   background-color: #ddd;	
+}
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

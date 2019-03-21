@@ -169,12 +169,24 @@ function reset() {
 	var list = document.getElementById("calc");
 	while (list.hasChildNodes()){
 		list.removeChild(list.firstChild);
-	}			
+	}	
+	var list = document.getElementById("calc2");
+	while (list.hasChildNodes()){
+		list.removeChild(list.firstChild);
+	}	
 	var list = document.getElementById("temp");
 	while (list.hasChildNodes()){
 		list.removeChild(list.firstChild);
 	}
+	var list = document.getElementById("temp2");
+	while (list.hasChildNodes()){
+		list.removeChild(list.firstChild);
+	}
 	var list = document.getElementById("comp");
+	while (list.hasChildNodes()){
+		list.removeChild(list.firstChild);
+	}
+	var list = document.getElementById("comp2");
 	while (list.hasChildNodes()){
 		list.removeChild(list.firstChild);
 	}	
