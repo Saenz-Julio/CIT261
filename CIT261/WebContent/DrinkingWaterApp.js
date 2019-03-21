@@ -60,14 +60,18 @@ function calculate() {
  	var calcComp = Number(calcCompare(calcBase, item.wat).toFixed(0));
  	var calcPerc;
  				 				    
-    document.getElementById("calc").innerHTML = calcBase + " ounces (Recommended amount of water per day)";
-    document.getElementById("temp").innerHTML = calcExtr + " ounces (Additional amount to drink based on the current temperature of " + associativeArray["tem"] + "&deg F in " + associativeArray["nam"] + ")";
+ 	document.getElementById("calc").innerHTML = calcBase;
+ 	document.getElementById("calc2").innerHTML = " ounces (Recommended water amount to drink per day)";
+    document.getElementById("temp").innerHTML = calcExtr;
+    document.getElementById("temp2").innerHTML = " ounces (Additional water to drink based " + associativeArray["tem"] + "&deg F in " + associativeArray["nam"] + ")";
     
     if (calcComp <= 0) {
-    	document.getElementById("comp").innerHTML = calcComp * -1 + " ounces (Additional amount to drink based on " + wat + " ounces already consummed)";
+    	document.getElementById("comp").innerHTML = calcComp * -1;
+    	document.getElementById("comp2").innerHTML = " ounces (Additional water amount to drink based on " + wat + " ounces already consummed)";
     	calcPerc = (1 - (calcComp / calcTota * -1)) * 100;
     } else {
-    	document.getElementById("comp").innerHTML = "0 ounces (Additional amount to drink based on " + wat + " ounces already consummed)";
+    	document.getElementById("comp").innerHTML = "0";
+    	document.getElementById("comp2").innerHTML = " ounces (Additional water amount to drink based on " + wat + " ounces already consummed)";
     	calcPerc = 100;
     }
     

@@ -16,20 +16,20 @@
 			<h3>Enter your information</h3>	
 			<table>
 			    <tr>
-			      <td>Enter your age</td>
-			      <td><input type="number" id="age" onclick="this.value = '' "/></td>
+			      	<td>Enter your age</td>
+			      	<td><input type="number" id="age" onclick="this.value = '' "/></td>
 			    </tr>
 			    <tr>
-			      <td>Weight(pounds)</td>
-			      <td><input type="number" id="wei" onclick="this.value = '' "/></td>
+			      	<td>Weight(pounds)</td>
+			      	<td><input type="number" id="wei" onclick="this.value = '' "/></td>
 			    </tr>
 			    <tr>
-			      <td>Height(inches</td>
-			      <td><input type="number" id="hei" onclick="this.value = '' "/></td>
+			      	<td>Height(inches</td>
+			      	<td><input type="number" id="hei" onclick="this.value = '' "/></td>
 			    </tr>
 			    <tr>
-			      <td>Water consummed today(ounces)</td>
-			      <td><input type="number" id="wat" onclick="this.value = '' "/></td>
+			      	<td>Water consummed today(ounces)</td>
+			      	<td><input type="number" id="wat" onclick="this.value = '' "/></td>
 			    </tr>
 		    </table>
 			<button onclick="calculate()">Calculate</button>
@@ -37,10 +37,21 @@
 		</div>
 		
 		<div onmouseenter="transition()" id="recommendation">	
-			<h3>Your results</h3>			
-			<p id="calc">-</p>				
-			<p id="temp">-</p>	
-			<p id="comp">-</p>				
+			<h3>Your results</h3>	
+			<p><table>
+			    <tr>
+			      	<td id="calc">-</td>
+			     	<td id="calc2"></td>
+			    </tr>
+			    <tr>
+			    	<td id="temp">-</td>
+			    	<td id="temp2"></td>
+			    </tr>
+			    <tr>
+			    	<td id="comp">-</td>
+			      	<td id="comp2"></td>
+			    </tr>
+		    </table></p>
 		</div>
 		
 		<div onmousedown="animate()" id="canvas">				
@@ -57,7 +68,7 @@
 		</div>			
 		
 		<div id="video">
-			<h3>Below is a safety tip about keeping drinking water clean</h3>
+			<h3>keeping drinking water clean</h3>
 			<p>Video courtesy of <a href="https://www.health.govt.nz/our-work/environmental-health/drinking-water/drinking-water-resources/drinking-water-videos" target="_blank">Health.gov</a>.</p>
 			<video id="v1" width="400" controls>
 			  <source src="water-bugs-1.mp4" type="video/mp4">
@@ -66,7 +77,7 @@
 		</div>		
 		
 		<div id="audio">
-			<h3>Below is a swiming tip for kids</h3>
+			<h3>Swiming tip for kids</h3>
 			<p>Video courtesy of <a href="http://www.sligococo.ie/Environment/Water/WaterSafety/" target="_blank">Sligo</a>.</p>
 			<audio controls>
 				<source src="drownmonthly.mp3" type="audio/mpeg">
