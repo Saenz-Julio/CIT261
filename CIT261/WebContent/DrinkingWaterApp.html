@@ -12,25 +12,39 @@
 			<h1 id="h1">CIT 261: Water Calc App - Julio Saenz</h1>		
 		</div>
 		
-		<div id="input">
-			<h3>Please enter the values below to calculate the amount of water you should drink on a daily basis.</h3>	
-			Enter your age <input type="number" id="age" onclick="this.value = '' "/>
-			Weight(pounds) <input type="number" id="wei" onclick="this.value = '' "/>
-			Height(inches) <input type="number" id="hei" onclick="this.value = '' "/>
-			Water consummed today(ounces) <input type="number" id="wat" onclick="this.value = '' "/>		
+		<div id="input" align="center">
+			<h3>Calculate amount of water to drink daily</h3>	
+			<table>
+			    <tr>
+			      <td>Enter your age</td>
+			      <td><input type="number" id="age" onclick="this.value = '' "/></td>
+			    </tr>
+			    <tr>
+			      <td>Weight(pounds)</td>
+			      <td><input type="number" id="wei" onclick="this.value = '' "/></td>
+			    </tr>
+			    <tr>
+			      <td>Height(inches</td>
+			      <td><input type="number" id="hei" onclick="this.value = '' "/></td>
+			    </tr>
+			    <tr>
+			      <td>Water consummed today(ounces)</td>
+			      <td><input type="number" id="wat" onclick="this.value = '' "/></td>
+			    </tr>
+		    </table>
 			<button onclick="calculate()">Calculate</button>
-			<button onclick="reset()">Reset</button>	
-			<h3>Results</h3>			
+			<button onclick="reset()">Reset</button>							
 		</div>
 		
-		<div onmouseenter="transition()" id="recommendation">				
+		<div onmouseenter="transition()" id="recommendation">	
+			<h3>Your results</h3>			
 			<p id="calc">-</p>				
 			<p id="temp">-</p>	
 			<p id="comp">-</p>				
 		</div>
 		
 		<div onmousedown="animate()" id="canvas">				
-			<h3>Your Current Progress</h3>		
+			<h3>Your Progress</h3>		
 			<div id ="animate"></div>				
 			<canvas id="myCanvas" style="border:none;">
 			Your browser does not support the HTML5 canvas tag.
@@ -38,7 +52,7 @@
 		</div>	
 		
 		<div>
-			<h3>Calculation history</h3>	
+			<h3>Result history</h3>	
 			<ul id="history"></ul>	
 		</div>			
 		

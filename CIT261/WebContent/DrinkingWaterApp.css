@@ -13,7 +13,8 @@ h1 {
   color: #4CAF50;			  
 }
 h3 {
-margin-top: 50px;	  
+  margin-top: 25px;	  
+  text-transform: uppercase;
 }
 a {
   text-decoration: none;
@@ -23,7 +24,7 @@ video {
   width: 100%;
 }
 input:hover {
-  background-color: black;
+  background-color: #4CAF50;
   color: white;
 }
 #recommendation:hover {
@@ -35,6 +36,8 @@ input:hover {
   text-align: center;
   vertical-align: middle;
   height: 30px;
+  color: white;
+  line-height: 2;
 }
 canvas { 
   height: 30px; 

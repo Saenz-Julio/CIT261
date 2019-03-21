@@ -60,7 +60,7 @@ function calculate() {
  	var calcComp = Number(calcCompare(calcBase, item.wat).toFixed(0));
  	var calcPerc;
  				 				    
-    document.getElementById("calc").innerHTML = calcBase + " ounces (Recommended amount of water per day--------)";
+    document.getElementById("calc").innerHTML = calcBase + " ounces (Recommended amount of water per day)";
     document.getElementById("temp").innerHTML = calcExtr + " ounces (Additional amount to drink based on the current temperature of " + associativeArray["tem"] + "&deg F in " + associativeArray["nam"] + ")";
     
     if (calcComp <= 0) {
