@@ -1,6 +1,8 @@
 # CIT 261 - Julio Saenz
 ### [Project - Drinking Water App](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/DrinkingWaterApp.html)  
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ### [JavaScript Topic](http://htmlpreview.github.io/?https://github.com/Saenz-Julio/CIT261/blob/master/CIT261/WebContent/JavaScript.html)  
 This program covers the following: Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays.
 
