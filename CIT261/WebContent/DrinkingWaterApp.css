@@ -27,6 +27,11 @@ input:hover {
   background-color: #4CAF50;
   color: white;
 }
+#loading {
+  margin-top: 25px;	
+  height: 50px;
+  width: 50px;
+}
 #animate {
   position: absolute;
   background-color: #4CAF50;

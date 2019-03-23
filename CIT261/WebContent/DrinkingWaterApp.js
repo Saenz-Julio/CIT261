@@ -1,10 +1,38 @@
+function onload() {
+	// Element transition via triggered CSS
+	document.getElementById("h2").style.color = "white";
+	document.getElementById("h2").style.transition = "all 5s";
+	// Hides elements before calculation
+	document.getElementById("loading").style.display = "none";
+	document.getElementById("recommendation").style.display = "none";
+	document.getElementById("canvas").style.display = "none";
+	document.getElementById("results").style.display = "none";
+	document.getElementById("video").style.display = "none";
+	document.getElementById("audio").style.display = "none";
+}
+
 // Pulls JSON from openwathermap.org API via AJAX call
 var city = "Texas";
 var weather = new XMLHttpRequest();
 weather.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=311323dccd32343d1ef03de7a7f5777e", 'true');
 weather.send();			
 		
-function calculate() {		
+function calculate() {	
+	var vloa = document.getElementById("loading");
+	var vrec = document.getElementById("recommendation");
+	var vcan = document.getElementById("canvas");
+	var vres = document.getElementById("results");
+	var vvid = document.getElementById("video");
+	var vaud = document.getElementById("audio");
+	if (vrec.style.display === "none") {
+	    vrec.style.display = "block";
+	    vcan.style.display = "block";
+	    vres.style.display = "block";
+	    vvid.style.display = "block";
+	    vaud.style.display = "block";
+	    vloa.style.display = "block";
+	}	
+	
 	// Creates an empty array to take in values from local storage
 	var array = [];				
 	var associativeArray = [];	
@@ -52,7 +80,10 @@ function calculate() {
     	"water dranked = " + item.wat);
     line.appendChild(node);
     document.getElementById("history").appendChild(line);			    
-   	    
+   	
+    // Transforms loading image
+    rotateAnimation("loading", 20);   
+   
     // Calculates and displays water amounts
     var calcBase = Number(calcWater(item.age, item.wei, item.hei));
     var calcExtr = Number(calcExtra(associativeArray["tem"]) * calcBase);
@@ -206,8 +237,16 @@ function reset() {
 	}
 }	
 
-// Element transition via triggered CSS
-function onload() {
-	document.getElementById("h2").style.color = "white";
-	document.getElementById("h2").style.transition = "all 5s";
+//Anymates loading image by using transform to rotate it
+var looper;
+var degrees = 0;
+function rotateAnimation(el, speed) {
+	
+	var elem = document.getElementById(el);
+	elem.style.transform = "rotate("+degrees+"deg)";
+	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+	degrees++;
+	if(degrees > 359){
+		degrees = 1;
+	}
 }
