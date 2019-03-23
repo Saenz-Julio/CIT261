@@ -73,3 +73,12 @@ button {
   margin: 4px 2px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 640px) {
+  #waterImage {
+    width: 100%;
+  }
+  video {
+    width: 100%;
+  }
+}
