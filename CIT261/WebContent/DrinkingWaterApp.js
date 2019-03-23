@@ -238,13 +238,13 @@ function progress(elementId, elementId2, calcPerc, color, milliseconds, text) {
 	    clearInterval(id);
 	  } else {
 	    width++; 
-	    elem.style.width = width - 2.25 + '%'; 
+	    elem.style.width = width - 5 + '%'; 
 	    elem.innerHTML = text + width * 1  + '%';
 	  }
 	}  
 	// Progress bar transition via triggered CSS
-	document.getElementById(elementId2).style.backgroundColor = color;
-	document.getElementById(elementId2).style.transition = milliseconds;
+	// document.getElementById(elementId2).style.backgroundColor = color;
+	// document.getElementById(elementId2).style.transition = milliseconds;
 }
 
 // Clears all nodes in paragraph elements
