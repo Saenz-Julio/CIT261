@@ -32,12 +32,13 @@
 			      	<td><input type="number" id="wat" onclick="this.value = '' "/></td>
 			    </tr>
 		    </table>
-			<button onclick="calculate()">Calculate</button>
+			<button onclick="loading()">Calculate</button>
 			<button onclick="reset()">Reset</button>							
 		</div>
 		
-		<div align="center">
-			<img id="loading" src="Loading.png" alt="cog1">
+		<div id="loading" align="center">
+			<img id="loadingImage" src="Loading.png" alt="cog1">
+			<p id="loadingtext"></p>
 		</div>
 		
 		<div id="recommendation" align="center">	
@@ -59,9 +60,12 @@
 		</div>
 		
 		<div id="canvas" align="center">				
-			<h3>Your Progress</h3>		
 			<div id ="animate"></div>				
-			<canvas id="myCanvas" style="border:none;">
+			<canvas id="myCanvas">
+			Your browser does not support the HTML5 canvas tag.
+			</canvas>	
+			<div id ="animate2"></div>				
+			<canvas id="myCanvas2">
 			Your browser does not support the HTML5 canvas tag.
 			</canvas>	
 		</div>	

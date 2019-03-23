@@ -11,28 +11,43 @@ function onload() {
 	document.getElementById("audio").style.display = "none";
 }
 
-// Pulls JSON from openwathermap.org API via AJAX call
+function loading() {
+    // Makes loading image division appear
+	var vloa = document.getElementById("loading");
+	if (vloa.style.display === "none") {
+	    vloa.style.display = "block";
+	}	
+	rotateAnimation("loadingImage", 20);
+	document.getElementById("loadingtext").innerHTML = "Calculating, please wait.";
+	
+	// Waits to 
+	setTimeout(function(){
+		calculate();
+		
+	}, 2000);    
+}
+
+//Anymates loading image by using transform to rotate it
+var looper;
+var degrees = 0;
+function rotateAnimation(el, speed) {	
+	var elem = document.getElementById(el);
+	elem.style.transform = "rotate("+degrees+"deg)";
+	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+	degrees++;
+	if(degrees > 359){
+		degrees = 1;
+	}
+}
+
+//Pulls JSON from openwathermap.org API via AJAX call
 var city = "Texas";
 var weather = new XMLHttpRequest();
 weather.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=311323dccd32343d1ef03de7a7f5777e", 'true');
-weather.send();			
+weather.send();	
 		
 function calculate() {	
-	var vloa = document.getElementById("loading");
-	var vrec = document.getElementById("recommendation");
-	var vcan = document.getElementById("canvas");
-	var vres = document.getElementById("results");
-	var vvid = document.getElementById("video");
-	var vaud = document.getElementById("audio");
-	if (vrec.style.display === "none") {
-	    vrec.style.display = "block";
-	    vcan.style.display = "block";
-	    vres.style.display = "block";
-	    vvid.style.display = "block";
-	    vaud.style.display = "block";
-	    vloa.style.display = "block";
-	}	
-	
+	document.getElementById("loading").style.display = "none";
 	// Creates an empty array to take in values from local storage
 	var array = [];				
 	var associativeArray = [];	
@@ -79,16 +94,27 @@ function calculate() {
     	"height = " + item.hei + ", " +
     	"water dranked = " + item.wat);
     line.appendChild(node);
-    document.getElementById("history").appendChild(line);			    
-   	
-    // Transforms loading image
-    rotateAnimation("loading", 20);   
+    document.getElementById("history").appendChild(line);	
+    
+    // Makes division appear
+	var vrec = document.getElementById("recommendation");
+	var vcan = document.getElementById("canvas");
+	var vres = document.getElementById("results");
+	var vvid = document.getElementById("video");
+	var vaud = document.getElementById("audio");
+	if (vrec.style.display === "none") {
+	    vrec.style.display = "block";
+	    vcan.style.display = "block";
+	    vres.style.display = "block";
+	    vvid.style.display = "block";
+	    vaud.style.display = "block";
+	}	
    
     // Calculates and displays water amounts
     var calcBase = Number(calcWater(item.age, item.wei, item.hei));
     var calcExtr = Number(calcExtra(associativeArray["tem"]) * calcBase);
     var calcTota = parseInt(calcBase + calcExtr);
- 	var calcComp = Number(calcCompare(calcTota, item.wat).toFixed(0));
+ 	var calcComp = Number(calcAdditional(calcTota, item.wat).toFixed(0));
  	var calcPerc;
  				 				    
  	document.getElementById("calc").innerHTML = calcBase;
@@ -104,24 +130,9 @@ function calculate() {
     	document.getElementById("comp").innerHTML = "0";
     	document.getElementById("comp2").innerHTML = " ounces (Additional water amount to drink based on " + wat + " ounces already consummed)";
     	calcPerc = 100;
-    }
-    
-    // Element animation via triggered CSS
-    var elem = document.getElementById("animate");   
-    var width = 0;
-    var id = setInterval(frame, 20);
-    function frame() {
-      if (width >= calcPerc) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width - 1 + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }  
-    // Progress bar transition via triggered CSS
-    document.getElementById("myCanvas").style.backgroundColor = "#ddd";
-	document.getElementById("myCanvas").style.transition = "all 5s";
+    } 
+    progress("animate", "myCanvas", calcPerc, "#ddd", "all 5s", "Your progress: ");
+    progress("animate2", "myCanvas2", 70, "#ddd", "all 5s", "National average: ");
 }
 
 // calculates the amount of water that should be consumed per day
@@ -193,7 +204,7 @@ function calcExtra(tem) {
 }	
 
 // calculates the difference between the amount recommended vs. amount dranked
-function calcCompare(calcTota, wat) {			 			
+function calcAdditional(calcTota, wat) {			 			
 	return wat - calcTota;
 }
 
@@ -203,6 +214,34 @@ function calc(age, wei, hei, wat) {
   	this.wei = wei;
   	this.hei = hei;
   	this.wat = wat;
+}
+
+function sleep(milliseconds) {
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+		if ((new Date().getTime() - start) > milliseconds){
+			break;
+	    }
+	}
+}
+
+// Element animation via triggered CSS
+function progress(elementId, elementId2, calcPerc, color, milliseconds, text) {
+	var elem = document.getElementById(elementId);   
+	var width = 0;
+	var id = setInterval(frame, 20);
+	function frame() {
+	  if (width >= calcPerc) {
+	    clearInterval(id);
+	  } else {
+	    width++; 
+	    elem.style.width = width - 1 + '%'; 
+	    elem.innerHTML = text + width * 1  + '%';
+	  }
+	}  
+	// Progress bar transition via triggered CSS
+	document.getElementById(elementId2).style.backgroundColor = color;
+	document.getElementById(elementId2).style.transition = milliseconds;
 }
 
 // Clears all nodes in paragraph elements
@@ -236,17 +275,3 @@ function reset() {
 		list.removeChild(list.firstChild);
 	}
 }	
-
-//Anymates loading image by using transform to rotate it
-var looper;
-var degrees = 0;
-function rotateAnimation(el, speed) {
-	
-	var elem = document.getElementById(el);
-	elem.style.transform = "rotate("+degrees+"deg)";
-	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
-	degrees++;
-	if(degrees > 359){
-		degrees = 1;
-	}
-}

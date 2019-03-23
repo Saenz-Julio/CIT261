@@ -27,10 +27,15 @@ input:hover {
   background-color: #4CAF50;
   color: white;
 }
-#loading {
-  margin-top: 25px;	
-  height: 50px;
-  width: 50px;
+#loadingImage {
+  margin-top: 30px;	
+  height: 75px;
+  width: 75px;
+}
+canvas { 
+  height: 30px; 
+  width: 97.75vw; 
+  display: block;
 }
 #animate {
   position: absolute;
@@ -41,10 +46,14 @@ input:hover {
   color: white;
   line-height: 2;
 }
-canvas { 
-  height: 30px; 
-  width: 97.75vw; 
-  display: block;
+#animate2 {
+  position: absolute;
+  background-color: #c9bfab;
+  text-align: center;
+  vertical-align: middle;
+  height: 30px;
+  color: white;
+  line-height: 2;
 }
 button {
   background-color: #4CAF50;
