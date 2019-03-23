@@ -282,8 +282,8 @@ function reset() {
 function mirrorImage() {
 	document.getElementById("waterText").style.textTransform = "uppercase";
 	document.getElementById("waterText").style.color = "red";
-	document.getElementById("waterText").style.fontWeight = "bold";
-	document.getElementById("waterText").style.transition = "all 5s";
+	document.getElementById("waterText").style.fontWeight = "bold";	
+	document.getElementById("waterText").style.transition = "all 5s";	
 	document.getElementById("waterImage").style.transform = "scaleX(-1)";	
 	document.getElementById("waterImage").style.transition = "all 5s";
 }
