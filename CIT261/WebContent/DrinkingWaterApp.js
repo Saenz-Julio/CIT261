@@ -1,14 +1,14 @@
-// Creates an empty array to take in values from local storage
-var array = [];				
-var associativeArray = [];	
-var city = "Texas";
-
 // Pulls JSON from openwathermap.org API via AJAX call
+var city = "Texas";
 var weather = new XMLHttpRequest();
 weather.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=311323dccd32343d1ef03de7a7f5777e", 'true');
 weather.send();			
 		
-function calculate() {					
+function calculate() {		
+	// Creates an empty array to take in values from local storage
+	var array = [];				
+	var associativeArray = [];	
+	
 	// Parses JSON code retrieved from openwathermap.org
 	var res = weather.response;
 	var obj = JSON.parse(res);
@@ -56,13 +56,13 @@ function calculate() {
     // Calculates and displays water amounts
     var calcBase = Number(calcWater(item.age, item.wei, item.hei));
     var calcExtr = Number(calcExtra(associativeArray["tem"]) * calcBase);
-    var calcTota = calcBase + calcExtr;
- 	var calcComp = Number(calcCompare(calcBase, item.wat).toFixed(0));
+    var calcTota = parseInt(calcBase + calcExtr);
+ 	var calcComp = Number(calcCompare(calcTota, item.wat).toFixed(0));
  	var calcPerc;
  				 				    
  	document.getElementById("calc").innerHTML = calcBase;
  	document.getElementById("calc2").innerHTML = " ounces (Recommended water amount to drink per day)";
-    document.getElementById("temp").innerHTML = calcExtr;
+    document.getElementById("temp").innerHTML = calcExtr.toFixed(0);
     document.getElementById("temp2").innerHTML = " ounces (Additional water to drink based " + associativeArray["tem"] + "&deg F in " + associativeArray["nam"] + ")";
     
     if (calcComp <= 0) {
@@ -75,9 +75,6 @@ function calculate() {
     	calcPerc = 100;
     }
     
-    // Element transform via triggered CSS
-    // document.getElementById("recommendation").style.transform = "translate(100px)";         
-
     // Element animation via triggered CSS
     var elem = document.getElementById("animate");   
     var width = 0;
@@ -90,65 +87,78 @@ function calculate() {
         elem.style.width = width - 1 + '%'; 
         elem.innerHTML = width * 1  + '%';
       }
-    }
+    }  
+    // Progress bar transition via triggered CSS
+    document.getElementById("myCanvas").style.backgroundColor = "#ddd";
+	document.getElementById("myCanvas").style.transition = "all 5s";
 }
 
 // calculates the amount of water that should be consumed per day
-	function calcWater(age, wei, hei) {
- 		var ageMultiplier;	
- 		var heiMultiplier;	
- 		var waterAmount;
+function calcWater(age, wei, hei) {
+	var ageMultiplier;	
+	var heiMultiplier;	
+	var waterAmount;
  		
-  		switch (true) {
-	  	case age >= 55:
-	  		ageMultiplier = 30;
-	    	break;
-	  	case age >= 30:
-	  		ageMultiplier = 35;
-	   		break;
-	  	case age >= 1:
-	  		ageMultiplier = 40;
-	   		break;
-		}	
+	switch (true) {
+ 	case age >= 55:
+  		ageMultiplier = 30;
+    	break;
+  	case age >= 30:
+  		ageMultiplier = 35;
+   		break;
+  	case age >= 1:
+  		ageMultiplier = 40;
+   		break;
+	}	
   		
-  		switch (true) {
-	  	case hei >= 78:
-	  		heiMultiplier = 1.1;
-	    	break;
-	  	case hei >= 68:
-	  		heiMultiplier = 1.05;
-	   		break;
-	  	case hei >= 1:				  		
-	  		heiMultiplier = 1;
-	   		break;
-		}	
-  
-  		waterAmount = wei /2.2 * ageMultiplier / 28.3 * heiMultiplier;
-  		return waterAmount.toFixed(0);
-  	}	
+	switch (true) {
+  	case hei >= 78:
+  		heiMultiplier = 1.1;
+    	break;
+  	case hei >= 68:
+  		heiMultiplier = 1.05;
+   		break;
+  	case hei >= 1:				  		
+  		heiMultiplier = 1;
+   		break;
+	}	
+ 
+	waterAmount = wei /2.2 * ageMultiplier / 28.3 * heiMultiplier;
+	return waterAmount.toFixed(0);
+}	
 	
-	// calculates the amount of water that should be consumed per day
+// calculates the amount of water that should be consumed per day
+// sets background color for transition in onload() function
 function calcExtra(tem) {
 	var temMultiplier;			 		
 	
 	switch (true) {
-	case tem >= 100:
-  		temMultiplier = .3;
-		document.getElementById("temp").style.backgroundColor = "red";
-    	break;
 	case tem >= 90:
-  		temMultiplier = .2;
-		document.getElementById("temp").style.backgroundColor = "orange";
+  		temMultiplier = .3;
+		document.getElementById("temp").style.backgroundColor = "red";		
+		document.getElementById("temp2").style.backgroundColor = "red";
+		document.getElementById("temp").style.transition = "all 7s";
+		document.getElementById("temp2").style.transition = "all 7s";
     	break;
-  	case tem >= 80:
+	case tem >= 83:
+  		temMultiplier = .2;
+		document.getElementById("temp").style.backgroundColor = "orange";		
+		document.getElementById("temp2").style.backgroundColor = "orange";
+		document.getElementById("temp").style.transition = "all 7s";
+		document.getElementById("temp2").style.transition = "all 7s";
+    	break;
+  	case tem >= 75:
   		temMultiplier = .1;
   		document.getElementById("temp").style.backgroundColor = "yellow";
+  		document.getElementById("temp2").style.backgroundColor = "yellow";
+  		document.getElementById("temp").style.transition = "all 7s";
+		document.getElementById("temp2").style.transition = "all 7s";
    		break;
   	case tem >= 1:				  		
   		temMultiplier = 0;				  		
    		break;
 	}	
-	return temMultiplier.toFixed(0);
+	return temMultiplier;
 }	
 
 // calculates the difference between the amount recommended vs. amount dranked
@@ -190,14 +200,14 @@ function reset() {
 	while (list.hasChildNodes()){
 		list.removeChild(list.firstChild);
 	}	
+	var list = document.getElementById("history");
+	while (list.hasChildNodes()){
+		list.removeChild(list.firstChild);
+	}
 }	
 
 // Element transition via triggered CSS
-function transition() {			 			
-	document.getElementById("recommendation").style.transition = "all 5s";
-}
-
 function onload() {
-	document.getElementById("h1").style.color = "white";
-	document.getElementById("h1").style.transition = "all 5s";
+	document.getElementById("h2").style.color = "white";
+	document.getElementById("h2").style.transition = "all 5s";
 }

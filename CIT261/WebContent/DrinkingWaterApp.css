@@ -21,14 +21,11 @@ a {
   color: #008CBA;
 }
 video {
-  width: 100%;
+  width: 50%;
 }
 input:hover {
   background-color: #4CAF50;
   color: white;
-}
-#recommendation:hover {
-  background-color: lightblue;				 	  
 }
 #animate {
   position: absolute;
@@ -43,7 +40,6 @@ canvas {
   height: 30px; 
   width: 97.75vw; 
   display: block;
-  background-color: #ddd;	
 }
 button {
   background-color: #4CAF50;

@@ -9,7 +9,7 @@
 	<body onload="onload()" id="body">
 		
 		<div class="topnav">
-			<h2 id="h1">Drinking Water App</h1>		
+			<h2 id="h2">Drinking Water App</h1>		
 		</div>
 		
 		<div id="input" align="center">
@@ -36,7 +36,7 @@
 			<button onclick="reset()">Reset</button>							
 		</div>
 		
-		<div onmouseenter="transition()" id="recommendation">	
+		<div id="recommendation" align="center">	
 			<h3>Your results</h3>	
 			<p><table>
 			    <tr>
@@ -54,7 +54,7 @@
 		    </table></p>
 		</div>
 		
-		<div onmousedown="animate()" id="canvas">				
+		<div id="canvas" align="center">				
 			<h3>Your Progress</h3>		
 			<div id ="animate"></div>				
 			<canvas id="myCanvas" style="border:none;">
@@ -62,12 +62,12 @@
 			</canvas>	
 		</div>	
 		
-		<div>
+		<div align="center">
 			<h3>Result history</h3>	
-			<ul id="history"></ul>	
+			<p id="history"></p>	
 		</div>			
 		
-		<div id="video">
+		<div id="video" align="center">
 			<h3>keeping drinking water clean</h3>
 			<p>Video courtesy of <a href="https://www.health.govt.nz/our-work/environmental-health/drinking-water/drinking-water-resources/drinking-water-videos" target="_blank">Health.gov</a>.</p>
 			<video id="v1" width="400" controls>
@@ -76,9 +76,9 @@
 			</video>				
 		</div>		
 		
-		<div id="audio">
+		<div id="audio" align="center">
 			<h3>Swiming tip for kids</h3>
-			<p>Video courtesy of <a href="http://www.sligococo.ie/Environment/Water/WaterSafety/" target="_blank">Sligo</a>.</p>
+			<p>Audio courtesy of <a href="http://www.sligococo.ie/Environment/Water/WaterSafety/" target="_blank">Sligo</a>.</p>
 			<audio controls>
 				<source src="drownmonthly.mp3" type="audio/mpeg">
 				Your browser does not support the audio element.
