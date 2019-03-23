@@ -20,6 +20,12 @@ a {
   text-decoration: none;
   color: #008CBA;
 }
+#water {
+  margin-top: 25px;	  
+}
+#waterImage {
+  width: 50%;
+}
 video {
   width: 50%;
 }

@@ -6,6 +6,7 @@ function onload() {
 	document.getElementById("loading").style.display = "none";
 	document.getElementById("recommendation").style.display = "none";
 	document.getElementById("canvas").style.display = "none";
+	document.getElementById("water").style.display = "none";
 	document.getElementById("results").style.display = "none";
 	document.getElementById("video").style.display = "none";
 	document.getElementById("audio").style.display = "none";
@@ -100,12 +101,14 @@ function calculate() {
 	var vrec = document.getElementById("recommendation");
 	var vcan = document.getElementById("canvas");
 	var vres = document.getElementById("results");
+	var vwat = document.getElementById("water");
 	var vvid = document.getElementById("video");
 	var vaud = document.getElementById("audio");
 	if (vrec.style.display === "none") {
 	    vrec.style.display = "block";
 	    vcan.style.display = "block";
 	    vres.style.display = "block";
+	    vwat.style.display = "block";
 	    vvid.style.display = "block";
 	    vaud.style.display = "block";
 	}	
@@ -225,7 +228,7 @@ function sleep(milliseconds) {
 	}
 }
 
-// Element animation via triggered CSS
+// Progress bar animation via triggered CSS
 function progress(elementId, elementId2, calcPerc, color, milliseconds, text) {
 	var elem = document.getElementById(elementId);   
 	var width = 0;
@@ -274,4 +277,13 @@ function reset() {
 	while (list.hasChildNodes()){
 		list.removeChild(list.firstChild);
 	}
-}	
+}
+
+function mirrorImage() {
+	document.getElementById("waterText").style.textTransform = "uppercase";
+	document.getElementById("waterText").style.color = "red";
+	document.getElementById("waterText").style.fontWeight = "bold";
+	document.getElementById("waterText").style.transition = "all 5s";
+	document.getElementById("waterImage").style.transform = "scaleX(-1)";	
+	document.getElementById("waterImage").style.transition = "all 5s";
+}
