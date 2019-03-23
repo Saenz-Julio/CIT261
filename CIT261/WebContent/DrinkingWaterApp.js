@@ -238,7 +238,7 @@ function progress(elementId, elementId2, calcPerc, color, milliseconds, text) {
 	    clearInterval(id);
 	  } else {
 	    width++; 
-	    elem.style.width = width - 5 + '%'; 
+	    elem.style.width = width - 2.5 + '%'; 
 	    elem.innerHTML = text + width * 1  + '%';
 	  }
 	}  
